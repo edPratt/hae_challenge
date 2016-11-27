@@ -49,6 +49,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -58,4 +59,10 @@ group :production do
   gem 'rails_12factor'
 end
 
-ruby "2.3.1"
+if ENV["RAILS_ENV"] == "development"
+  ruby '2.0.0'
+elsif ENV["RAILS_ENV"] == "production"
+  ruby '2.3.1'
+end
+
+
