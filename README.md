@@ -4,8 +4,8 @@ Live on Heroku: https://morning-savannah-51317.herokuapp.com/
 
 To run locally:
 
-rake db:create RAILS_ENV="development"
-rake db:migrate RAILS_ENV="development"
+1. rake db:create RAILS_ENV="development"
+2. rake db:migrate RAILS_ENV="development"
 
 
 
