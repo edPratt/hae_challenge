@@ -1,0 +1,42 @@
+<h1>Listing jobs</h1>
+<%= link_to 'New Job', new_job_path, class: "btn btn-default" %>
+<table class="table table-condensed">
+  <tr>
+    <th>Title</th>
+    <th>Hourly Rate</th>
+    <th>Tax Rate</th>
+    <th>Job ID</th>
+  </tr>
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.title %></td>
+      <td><%= job.hour_rate %></td>
+      <td><%= job.tax_rate %></td>
+      <td><%= job.id %></td>
+      <td><%= link_to 'Show', job_path(job), class: "btn btn-default btn-xs" %></td>
+      <td><%= link_to 'Edit', edit_job_path(job) , class: "btn btn-warning btn-xs" %></td>
+      <td><%= link_to 'Destroy', job_path(job),
+                    method: :delete , class: "btn btn-danger btn-xs" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h1>New Job</h1>
+<%= bootstrap_form_for :job, url: jobs_path do |f| %>
+  <p>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.text_area :hour_rate %>
+  </p>
+
+  <p>
+    <%= f.text_area :tax_rate %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

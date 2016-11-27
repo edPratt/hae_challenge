@@ -1,0 +1,22 @@
+<%= form_for :job, url: jobs_path do |f| %>
+  <p>
+    <%= f.label :job %><br>
+    <%= f.select("job", Job.all.collect {|p| [ p.id, p.id ]}) %>
+  </p>
+<% end %>
+
+# from: time_entry:index.html.erb
+<!--
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.title %></td>
+  </tr>
+<% end %> -->
+
+# from: time_entry:index.html.erb
+<% form_tag time_entries_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>

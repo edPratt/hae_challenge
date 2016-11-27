@@ -1,0 +1,33 @@
+<%= bootstrap_form_for(time_entry) do |f| %>
+  <% if time_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(time_entry.errors.count, "error") %> prohibited this time_entry from being saved:</h2>
+
+      <ul>
+      <% time_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :time_spent %>
+  </div>
+
+  <div class="field">
+    <%= f.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :summary %>
+  </div>
+
+  <div class="field">
+    <%= f.select("job_id", Job.all.collect {|p| [ p.title, p.id ]}, {include_blank: 'Please select'})%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

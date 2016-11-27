@@ -1,0 +1,39 @@
+<h1>New Invoice</h1>
+<%= form_for :invoice do |i| %>
+
+  <div class="field">
+    <%= i.label :job %>
+    <%= @a = i.select("job_id", Job.all.collect {|p| [ p.title, p.id ]})%>
+    <% @j = "hey"%>
+  </div>
+  <p>
+  <%= button_to "Some Button", :method=> "someButton" %>
+  </p>
+
+  <p>
+  <%= @job_id.inspect %>
+  </p>
+
+  <br>
+  </br>
+<% end %>
+
+<%= for i in @time_entries do %>
+  <%= puts i %>
+<% end %>
+
+
+<p>
+  Job <br>
+  Date range <br>
+  Time entries in range <br>
+  $ subtotal (hourly rate * total minutes / 60) <br>
+  $ tax (subtotal * tax rate) <br>
+  $ total <br>
+</p>
+
+
+
+
+
+

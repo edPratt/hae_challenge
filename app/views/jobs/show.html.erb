@@ -1,0 +1,54 @@
+<h1>Show</h1>
+<p>
+  <strong>Title:</strong>
+  <%= @job.title %>
+</p>
+
+<p>
+  <strong>Hour Rate:</strong>
+  <%= @job.hour_rate %>
+</p>
+
+<p>
+  <strong>Tax Rate:</strong>
+  <%= @job.tax_rate %>
+</p>
+
+
+<h1>Invoice</h1>
+<p>
+  <strong>Dates:</strong>
+  <% @arr = TimeEntry.where(job_id: @job.id) %>
+  <% @total_time = 0 %>
+  <% @arr.each do |a| %>
+  <% @total_time = @total_time + a.time_spent %>
+  | <%= a.date %> |
+  <% end %>
+</p>
+
+<p>
+  <strong>Total Time:</strong>
+  <% @total_time_hours = @total_time / 60 %>
+  <%= @total_time_hours.round(2) %> hrs
+</p>
+
+<p>
+  <strong>Subtotal:</strong>
+  <% @subtotal = @job.hour_rate * @total_time_hours %>
+  $ <%= @subtotal.round(2) %>
+</p>
+
+<p>
+  <strong>Tax:</strong>
+  <% @tax = @job.tax_rate * @total_time_hours.round(2) %>
+  $ <%= @tax.round(2) %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <% @total = @subtotal - @tax%>
+  $ <%= @total.round(2) %>
+</p>
+
+<%= link_to 'All Jobs', jobs_path %>
+
