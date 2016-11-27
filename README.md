@@ -1,7 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Live on Heroku: https://morning-savannah-51317.herokuapp.com/
+
+To run locally:
+
+rake db:create RAILS_ENV="development"
+rake db:migrate RAILS_ENV="development"
+
+
+
 
 Things you may want to cover:
 
@@ -22,3 +29,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
