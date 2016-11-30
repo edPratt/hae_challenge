@@ -15,6 +15,8 @@ for i in 1...50 do
   Job.create(title: @rand_word, hour_rate: @rand_hour_rate, tax_rate: @rand_tax_rate)
 end
 
+TimeEntry.delete_all
+
 require 'date'
 for i in 1...50 do
   @rand_time_spent = rand(1..60)
